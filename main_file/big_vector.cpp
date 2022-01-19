@@ -1,6 +1,7 @@
 #include "../container_tester.hpp"
 
 int main () {
+	std::cout << "1" << std::endl;
   ACCESS::vector<int> myvector;
   for (int i=0; i<10; i++) myvector.push_back(i);
   typedef ACCESS::vector<int>::iterator iter_type;                                                  

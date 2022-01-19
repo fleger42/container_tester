@@ -1,20 +1,23 @@
 #include "../container_tester.hpp"
 
-int main () {
-  ACCESS::vector<int> myvector;
-  for (int i=0; i<10; i++) myvector.push_back(i);
-  typedef ACCESS::vector<int>::iterator iter_type;                                                  
-  iter_type from (myvector.begin());                                                                
-  iter_type until (myvector.end());                                           
-  ACCESS::reverse_iterator<iter_type> rev_until (from); 
-  ACCESS::reverse_iterator<iter_type> rev_from (until); 
-  int i = 0;
-  while (rev_from != rev_until)
-  {
-    std::cout << ' ' << rev_from[i];
-	rev_from++;
-	i++;
-  }
-  std::cout << '\n';
-  return 0;
+int main () 
+{
+ 	ACCESS::vector<std::string> cont;
+	cont.insert(cont.begin(), "salut");
+	cont.insert(cont.begin(), "test");
+	cont.insert(cont.begin(), "3");
+    ACCESS::vector<std::string> tmp = cont;
+	tmp.insert(tmp.begin(), cont.begin(), cont.end());
+	for (ACCESS::vector<std::string>::const_iterator it = tmp.begin(); it != tmp.end(); ++it)
+        std::cout << *it << " | " << std::endl;
+    if (tmp.size())
+    {
+        ACCESS::vector<std::string>::iterator it = tmp.begin();
+        ++it;
+        tmp.insert(it, cont.begin(), cont.end());
+    }
+    tmp.insert(tmp.end(), cont.begin(), cont.end());
+    tmp.insert(tmp.end(), cont.begin(), cont.begin());
+    for (ACCESS::vector<std::string>::const_iterator it = tmp.begin(); it != tmp.end(); ++it)
+        std::cout << *it << " | " << std::endl;
 }
